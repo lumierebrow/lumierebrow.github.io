@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>르미에르브로우 - 속눈썹 & 눈썹문신 뷰티샵</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --main-color: #FAF1E9;
+            --accent-color: #D4A373;
+            --dark-color: #5C4033;
+            --text-color: #3C2A21;
+            --light-text: #6B5A4E;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+        }
+        
+        body {
+            background-color: var(--main-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 5%;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            margin-left: 0.5rem;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        /* Main Content */
+        main {
+            padding-top: 80px;
+        }
+        
+        section {
+            padding: 4rem 10%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            font-size: 2rem;
+            color: var(--dark-color);
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto;
+        }
+        
+        /* Hero Section & Carousel */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .slide-bg.active {
+            opacity: 1;
+        }
+        
+        .slide-content {
+            position: absolute;
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 600px;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+        }
+        
+        .slide-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .slide-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--light-text);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(212, 163, 115, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--white);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            padding-right: 2rem;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--light-text);
+        }
+        
+        .director-profile {
+            display: flex;
+            align-items: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: var(--main-color);
+            border-radius: 10px;
+        }
+        
+        .director-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1.5rem;
+        }
+        
+        .director-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .director-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .shop-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .gallery-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-img:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: var(--main-color);
+        }
+        
+        .service-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem;
+            background-color: var(--white);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--light-text);
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+        
+        .service-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .service-content.active {
+            display: block;
+        }
+        
+        .service-item {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .service-info p {
+            color: var(--light-text);
+            margin-bottom: 1rem;
+        }
+        
+        .service-price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        
+        /* Booking Section */
+        .booking {
+            background-color: var(--white);
+        }
+        
+        .booking-info {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .booking-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .step-item {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--main-color);
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .step-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .step-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .booking-policy {
+            background-color: #F8F8F8;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        
+        .policy-item {
+            margin-bottom: 1rem;
+        }
+        
+        .policy-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .policy-item p {
+            color: var(--light-text);
+        }
+        
+        .booking-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        /* Reviews Section */
+        .reviews {
+            background-color: var(--main-color);
+        }
+        
+        .review-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .review-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .review-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .review-info h4 {
+            font-size: 1.1rem;
+            color: var(--dark-color);
+        }
+        
+        .review-info .date {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        
+        .stars {
+            color: #FFCC00;
+            margin-bottom: 1rem;
+        }
+        
+        .review-text {
+            color: var(--light-text);
+            line-height: 1.8;
+        }
+        
+        /* Location Section */
+        .location {
+            background-color: var(--white);
+        }
+        
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .location-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-icon {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-right: 1rem;
+            min-width: 30px;
+        }
+        
+        .info-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--dark-color);
+        }
+        
+        .info-text p {
+            color: var(--light-text);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 3rem 10%;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-col p {
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 1rem;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Media Queries */
+        @media screen and (max-width: 1024px) {
+            section {
+                padding: 4rem 5%;
+            }
+            
+            .about-content,
+            .location-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .about-text {
+                padding-right: 0;
+            }
+            
+            .shop-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .booking-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .header-container {
+                position: relative;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 250px;
+                background-color: var(--white);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                border-radius: 5px;
+                padding: 1rem;
+                display: none;
+                z-index: 1000;
+            }
+            
+            nav.active {
+                display: block;
+                animation: fadeIn 0.3s;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0;
+                padding: 0.8rem 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+            
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+            
+            .slide-content {
+                padding: 1.5rem;
+                max-width: 90%;
+            }
+            
+            .slide-content h2 {
+                font-size: 2rem;
+            }
+            
+            .shop-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .service-info {
+                margin-bottom: 1rem;
+            }
+            
+            .booking-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .review-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .slide-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo" onclick="scrollToSection('hero')">
+                <img src="/api/placeholder/80/40" alt="르미에르브로우 로고">
+                <h1>르미에르브로우</h1>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="#about" onclick="scrollToSection('about')">샵 소개</a></li>
+                    <li><a href="#services" onclick="scrollToSection('services')">시술 메뉴</a></li>
+                    <li><a href="#booking" onclick="scrollToSection('booking')">예약 안내</a></li>
+                    <li><a href="#reviews" onclick="scrollToSection('reviews')">고객 리뷰</a></li>
+                    <li><a href="#location" onclick="scrollToSection('location')">오시는 길</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section with Carousel -->
+        <section id="hero" class="hero">
+            <div class="carousel">
+                <div class="slide-bg active" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/api/placeholder/1200/800')"></div>
+                <div class="slide-bg" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/api/placeholder/1200/800')"></div>
+                <div class="slide-bg" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/api/placeholder/1200/800')"></div>
+                <div class="slide-bg" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/api/placeholder/1200/800')"></div>
+                
+                <div class="slide-content">
+                    <h2>르미에르브로우</h2>
+                    <p>완벽한 눈썹과 속눈썹으로 당신의 아름다움을 밝혀드립니다</p>
+                    <a href="#booking" class="btn" onclick="scrollToSection('booking')">예약하기</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <h2 class="section-title">샵 소개</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>르미에르브로우</h3>
+                    <p>"르미에르(Lumière)"는 프랑스어로 '빛'을 의미합니다. 르미에르브로우는 빛나는 곳에서 빛나는 시술을 받으실 수 있도록 하겠다는 약속에서 시작되었습니다.</p>
+                    <p>자연스러운 아름다움을 추구하며, 고객 한 분 한 분의 얼굴형과 피부톤, 라이프스타일을 고려한 맞춤형 디자인을 제공합니다.</p>
+                    <p>최신 트렌드와 기술을 끊임없이 연구하며, 철저한 위생 관리와 프리미엄 제품 사용으로 고객님께 최상의 서비스를 제공합니다.</p>
+                    
+                    <div class="director-profile">
+                        <div class="director-img">
+                            <img src="/api/placeholder/100/100" alt="원장님 프로필">
+                        </div>
+                        <div class="director-info">
+                            <h4>김아름 원장</h4>
+                            <p>• 국제 뷰티 아카데미 수료</p>
+                            <p>• 아이브로우 국제 자격증 보유</p>
+                            <p>• 5년 경력의 전문가</p>
+                            <p>• 연간 1,000명 이상의 고객 시술 경험</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-gallery">
+                    <div class="gallery-img">
+                        <img src="/api/placeholder/300/300" alt="샵 전경 1">
+                    </div>
+                    <div class="gallery-img">
+                        <img src="/api/placeholder/300/300" alt="샵 전경 2">
+                    </div>
+                    <div class="gallery-img">
+                        <img src="/api/placeholder/300/300" alt="샵 전경 3">
+                    </div>
+                    <div class="gallery-img">
+                        <img src="/api/placeholder/300/300" alt="시술 공간">
+                    </div>
+                    <div class="gallery-img">
+                        <img src="/api/placeholder/300/300" alt="대기 공간">
+                    </div>
+                    <div class="gallery-img">
+                        <img src="/api/placeholder/300/300" alt="카운터">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <h2 class="section-title">시술 메뉴</h2>
+            <div class="service-tabs">
+                <button class="tab-btn active" data-tab="eyebrow">눈썹 문신</button>
+                <button class="tab-btn" data-tab="eyelash">속눈썹</button>
+                <button class="tab-btn" data-tab="special">스페셜 케어</button>
+            </div>
+            
+            <div class="service-content active" id="eyebrow-content">
+                <div class="service-item">
+                    <div class="service-info">
+                        <h3>3D 자연눈썹</h3>
+                        <p>자연스러운 눈썹 결을 살려 3D 효과를 주는 시술로, 눈썹이 없거나 숱이 적은 분들께 추천드립니다.</p>
+                    </div>
+                    <div class="service-price">250,000원~</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h3>4D 입체눈썹</h3>
+                        <p>더욱 세밀한 터치로 입체감과 자연스러운 결을 강조한 프리미엄 시술입니다.</p>
+                    </div>
+                    <div class="service-price">300,000원~</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h3>파우더 눈썹</h3>
+                        <p>안개처럼 부드럽게 채워 자연스러운 그라데이션 효과를 주는 시술입니다.</p>
+                    </div>
+                    <div class="service-price">230,000원~</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h3>콤비네이션 눈썹</h3>
+                        <p>헤어스트로크와 파우더를 믹스하여 자연스러움과 또렷함을 동시에 표현하는 시술입니다.</p>
+                    </div>
+                    <div class="service-price">280,000원~</div>
+                </div>
+            </div>
+            
+            <div class="service-content" id="eyelash-content">
+                <div class="service-item">
+                    <div class="service-info">
+                        <h3>속눈썹 연장 - 내추럴</h3>
+                        <p>자연스러운 속눈썹 연장으로 일상 생활에 적합한 스타일입니다.</p>
+                    </div>
+                    <div class="service-price">70,000원~</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h3>속눈썹 연장 - 볼륨</h3>
+                        <p>풍성하고 화려한 속눈썹으로 특별한 날에 어울리는 스타일입니다.</p>
+                    </div>
+                    <div class="service-price">90,000원~</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h3>속눈썹 리프팅</h3>
+                        <p>자신의 속눈썹을 위로 올려 더 길고 컬이 있게 만드는 시술입니다.</p>
+                    </div>
+                    <div class="service-price">60,000원~</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h3>하이브리드 연장</h3>
+                        <p>내추럴과 볼륨의 장점을 결합한 중간 스타일의 속눈썹 연장입니다.</p>
+                    </div>
+                    <div class="service-price">80,000원~</div>
+                </div>
+            </div>
+            
+            <div class="service-content" id="special-content">
+                <div class="service-item">
+                    <div class="service-info">
+                        <h3>눈썹 라미네이션</h3>
+                        <p>자연 눈썹을 정돈하고 컬을 부여하여 풍성한 눈썹을 연출하는 시술입니다.</p>
+                    </div>
+                    <div class="service-price">50,000원~</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h3>속눈썹 & 눈썹 염색</h3>
+                        <p>눈썹과 속눈썹에 컬러를 입혀 더 또렷하고 선명한 인상을 만듭니다.</p>
+                    </div>
+                    <div class="service-price">30,000원~</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h3>남성 눈썹 정리</h3>
+                        <p>남성 얼굴형에 맞는 눈썹 디자인과 정리로 깔끔한 인상을 완성합니다.</p>
+                    </div>
+                    <div class="service-price">40,000원~</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h3>VIP 패키지</h3>
+                        <p>눈썹 문신 + 속눈썹 연장의 스페셜 패키지로 완벽한 눈매를 완성합니다.</p>
+                    </div>
+                    <div class="service-price">350,000원~</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="booking">
+            <h2 class="section-title">예약 안내</h2>
+            <div class="booking-info">
+                <div class="booking-steps">
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>1. 예약 문의</h3>
+                        <p>전화 또는 카카오톡 채널을 통해 원하시는 날짜와 시간을 문의해주세요.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>2. 예약금 입금</h3>
+                        <p>예약 확정을 위해 시술 금액의 30%를 예약금으로 입금해주세요.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>3. 예약 확정</h3>
+                        <p>예약금 확인 후 문자 메시지로 예약 확정 안내를 드립니다.</p>
+                    </div>
+                </div>
+                
+                <div class="booking-policy">
+                    <div class="policy-item">
+                        <h4>예약금 안내</h4>
+                        <p>모든 시술은 예약제로 운영되며, 시술 금액의 30%를 예약금으로 받습니다. 예약금은 시술 당일 총 금액에서 차감됩니다.</p>
+                    </div>
+                    <div class="policy-item">
+                        <h4>리터치 정책</h4>
+                        <p>눈썹 문신의 경우 시술 후 1개월 이내에 1회 무료 리터치가 가능합니다. 이후 리터치는 시술 종류에 따라 할인된 가격으로 제공됩니다.</p>
+                    </div>
+                    <div class="policy-item">
+                        <h4>변경 및 취소 규정</h4>
+                        <p>시술 예약일 3일 전까지 변경 시 100% 환불, 2일 전 80% 환불, 1일 전 50% 환불되며, 당일 취소 시 예약금은 환불되지 않습니다.</p>
+                    </div>
+                </div>
+                
+                <div class="booking-cta">
+                    <a href="tel:01012345678" class="btn">전화 예약하기</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="reviews">
+            <h2 class="section-title">고객 리뷰</h2>
+            <div class="review-cards">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            <img src="/api/placeholder/50/50" alt="고객 사진">
+                        </div>
+                        <div class="review-info">
+                            <h4>김지은</h4>
+                            <p class="date">2025.03.15</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">눈썹 문신이 처음이라 많이 걱정했는데, 원장님이 친절하게 상담해주시고 제 얼굴형에 맞는 디자인을 추천해주셔서 너무 만족스러워요! 자연스러운 눈썹으로 화장 시간이 확 줄었어요.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            <img src="/api/placeholder/50/50" alt="고객 사진">
+                        </div>
+                        <div class="review-info">
+                            <h4>박서연</h4>
+                            <p class="date">2025.02.28</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">속눈썹 연장을 받았는데 정말 자연스럽고 예뻐요! 속눈썹 연장은 처음인데 전혀 불편함 없이 너무 편해요. 마스카라 바르는 시간이 줄어서 아침에 여유가 생겼어요.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            <img src="/api/placeholder/50/50" alt="고객 사진">
+                        </div>
+                        <div class="review-info">
+                            <h4>이민준</h4>
+                            <p class="date">2025.01.20</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="review-text">남자인데 눈썹이 숱이 적어서 고민이었어요. 남성 눈썹 정리 서비스를 받았는데 자연스럽게 정리해주셔서 정말 좋았습니다. 직장에서도 인상이 좋아졌다는 말을 많이 들어요.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            <img src="/api/placeholder/50/50" alt="고객 사진">
+                        </div>
+                        <div class="review-info">
+                            <h4>황수진</h4>
+                            <p class="date">2025.04.05</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">4D 입체눈썹 시술을 받았는데 정말 만족스러워요! 이전에 다른 곳에서 했을 때는 색이 너무 진했는데, 여기는 자연스러운 색감과 디자인으로 제 얼굴에 딱 맞게 해주셨어요. 샵 분위기도 너무 좋고 청결했습니다.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            <img src="/api/placeholder/50/50" alt="고객 사진">
+                        </div>
+                        <div class="review-info">
+                            <h4>안지현</h4>
+                            <p class="date">2025.03.25</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">눈썹 라미네이션과 염색을 동시에 받았어요. 푸석했던 눈썹이 차분해지고 눈썹 모양도 예뻐져서 너무 좋아요! 시술 과정도 편안했고 결과도 만족스러웠습니다. 다음에는 속눈썹 리프팅도 해볼 생각이에요.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            <img src="/api/placeholder/50/50" alt="고객 사진">
+                        </div>
+                        <div class="review-info">
+                            <h4>정유진</h4>
+                            <p class="date">2025.02.10</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">VIP 패키지로 눈썹 문신과 속눈썹 연장을 같이 받았어요. 아침에 화장하는 시간이 정말 줄었습니다! 원장님의 섬세한 손길로 자연스러우면서도 또렷한 인상을 갖게 되었어요. 주변에서 예뻐졌다는 말을 많이 들어요.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section id="location" class="location">
+            <h2 class="section-title">오시는 길</h2>
+            <div class="location-content">
+                <div class="map-container">
+                    <img src="/api/placeholder/600/400" alt="르미에르브로우 지도">
+                </div>
+                <div class="location-info">
+                    <h3>르미에르브로우 위치 안내</h3>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>주소</h4>
+                            <p>서울특별시 강남구 테헤란로 123 뷰티빌딩 5층</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-subway"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>지하철</h4>
+                            <p>2호선 강남역 4번 출구에서 도보 5분</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>버스</h4>
+                            <p>강남역 정류장 하차 (간선: 140, 144, 지선: 3412)</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>주차</h4>
+                            <p>건물 내 지하주차장 2시간 무료 (주차권 제공)</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>찾아오시는 팁</h4>
+                            <p>뷰티빌딩 로비에서 5층으로 오시면 르미에르브로우 간판이 보입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>르미에르브로우</h3>
+                <p>빛나는 곳에서 빛나는 시술을 받으실 수 있도록 정성을 다하겠습니다.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>연락처</h3>
+                <ul>
+                    <li><i class="fas fa-phone-alt"></i> 02-123-4567</li>
+                    <li><i class="fas fa-mobile-alt"></i> 010-1234-5678</li>
+                    <li><i class="fas fa-envelope"></i> info@lumierebrow.com</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>영업시간</h3>
+                <ul>
+                    <li>평일: 10:00 - 20:00</li>
+                    <li>토요일: 10:00 - 18:00</li>
+                    <li>일요일: 10:00 - 17:00</li>
+                    <li>공휴일: 예약제</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>바로가기</h3>
+                <ul>
+                    <li><a href="#about">샵 소개</a></li>
+                    <li><a href="#services">시술 메뉴</a></li>
+                    <li><a href="#booking">예약 안내</a></li>
+                    <li><a href="#reviews">고객 리뷰</a></li>
+                    <li><a href="#location">오시는 길</a></li>
+                    <li><a href="https://pf.kakao.com" target="_blank">카카오톡 채널</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 르미에르브로우. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+        
+        // Smooth Scrolling for Navigation
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const offsetTop = section.offsetTop - headerHeight;
+            
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+            
+            // Close mobile menu after clicking
+            navMenu.classList.remove('active');
+        }
+        
+        // Service Tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const serviceContents = document.querySelectorAll('.service-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                serviceContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to current tab
+                btn.classList.add('active');
+                document.getElementById(`${btn.dataset.tab}-content`).classList.add('active');
+            });
+        });
+        
+        // Carousel Slideshow - Only Background Images
+        const slideBgs = document.querySelectorAll('.slide-bg');
+        let currentSlide = 0;
+        
+        function showSlide(n) {
+            slideBgs.forEach(bg => bg.classList.remove('active'));
+            currentSlide = (n + slideBgs.length) % slideBgs.length;
+            slideBgs[currentSlide].classList.add('active');
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        // Change slide every 3 seconds
+        setInterval(nextSlide, 3000);
+        
+        // Active Navigation based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+            const headerHeight = document.querySelector('header').offsetHeight;
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - headerHeight - 100;
+                const sectionHeight = section.offsetHeight;
+                
+                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
