@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://lumierebrow.github.io/img/thumnail.jpg">
     <title>르미에르브로우 - 속눈썹 & 눈썹문신 뷰티샵</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="header-container">
             <div class="logo" onclick="scrollToSection('hero')">
-                <img src="/api/placeholder/80/40" alt="르미에르브로우 로고">
-                <h1>르미에르브로우</h1>
+                <img src="img/logo.png" alt="르미에르브로우 로고">
             </div>
             <div class="menu-toggle" id="menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -510,7 +510,7 @@
 
     <div class="fixed-buttons">
         <a href="#booking" class="fixed-button booking-button" onclick="scrollToSection('booking')">예약</a>
-        <div class="fixed-button top-button" onclick="scrollToTop()">
+        <div class="fixed-button top-button" onclick="scrollToSection('hero')">
             <div class="triangle-up"></div>
         </div>
     </div>
@@ -604,14 +604,6 @@
                 }
             });
         });
-
-        // 위로가기 버튼 클릭시 페이지 상단으로 스크롤
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
 
         // 스크롤 위치에 따라 위로가기 버튼 표시/숨김
         const topButton = document.querySelector('.top-button');
