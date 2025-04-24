@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lumierebrow.github.io/sitemap.xml
