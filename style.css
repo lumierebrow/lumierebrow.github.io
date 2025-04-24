@@ -183,7 +183,7 @@ section {
 }
 
 .slide-content p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 1.5rem;
     color: var(--light-text);
 }
@@ -631,6 +631,62 @@ footer {
     font-size: 0.9rem;
 }
 
+/* 고정 버튼 컨테이너 스타일 */
+.fixed-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+}
+
+/* 버튼 공통 스타일 */
+.fixed-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+/* 예약하기 버튼 스타일 */
+.booking-button {
+    background-color: var(--accent-color, #ff6b6b);
+    font-weight: bold;
+    font-size: 0.75rem;
+}
+
+/* 위로가기 버튼 스타일 */
+.top-button {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* 위로가기 삼각형 아이콘 */
+.top-button .triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 15px solid white;
+}
+
+/* 버튼 호버 효과 */
+.fixed-button:hover {
+    transform: translateY(-3px);
+    background-color: var(--accent-color-hover, #ff8787);
+}
+
+.top-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 /* Animations */
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -720,6 +776,29 @@ footer {
         grid-template-columns: 1fr;
     }
     
+    .service-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        padding: 0.6rem 1rem;
+        margin: 0.3rem;
+        font-size: 0.9rem;
+    }
+    
+    /* 모바일에서 텍스트 줄이기 */
+    [data-tab="semipermanent"] {
+        font-size: 0.85rem;
+    }
+    
+    [data-tab="facewaxing"] {
+        font-size: 0.85rem;
+    }
+    
+    [data-tab="finemark"] {
+        font-size: 0.85rem;
+    }
+
     .service-item {
         flex-direction: column;
         text-align: center;
@@ -740,6 +819,16 @@ footer {
     .footer-content {
         grid-template-columns: 1fr;
     }
+
+    .fixed-buttons {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .fixed-button {
+        width: 45px;
+        height: 45px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -752,11 +841,24 @@ footer {
     }
     
     .slide-content h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
     
     .btn {
         padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .tab-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    /* 매우 작은 화면에서 텍스트 더 줄이기 */
+    [data-tab="semipermanent"]::after,
+    [data-tab="eyelash"]::after,
+    [data-tab="facewaxing"]::after,
+    [data-tab="finemark"]::after {
         font-size: 0.9rem;
     }
 }

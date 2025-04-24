@@ -508,6 +508,13 @@
         </div>
     </footer>
 
+    <div class="fixed-buttons">
+        <a href="#booking" class="fixed-button booking-button" onclick="scrollToSection('booking')">예약</a>
+        <div class="fixed-button top-button" onclick="scrollToTop()">
+            <div class="triangle-up"></div>
+        </div>
+    </div>
+
     <!-- JavaScript -->
     <script>
         // Mobile Menu Toggle
@@ -596,6 +603,32 @@
                     link.classList.add('active');
                 }
             });
+        });
+
+        // 위로가기 버튼 클릭시 페이지 상단으로 스크롤
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // 스크롤 위치에 따라 위로가기 버튼 표시/숨김
+        const topButton = document.querySelector('.top-button');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                topButton.style.display = 'flex';
+            } else {
+                topButton.style.display = 'none';
+            }
+        });
+
+        // 페이지 로드시 위로가기 버튼 초기 상태 설정
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.pageYOffset <= 300) {
+                topButton.style.display = 'none';
+            }
         });
     </script>
 </body>
