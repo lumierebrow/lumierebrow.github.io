@@ -245,9 +245,7 @@ section {
 }
 
 .director-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    width: 50%;
     overflow: hidden;
     margin-right: 1.5rem;
 }
@@ -255,6 +253,7 @@ section {
 .director-img img {
     width: 100%;
     height: 100%;
+    border-radius: 10px;
     object-fit: cover;
 }
 
@@ -262,6 +261,10 @@ section {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
     color: var(--dark-color);
+}
+
+.director-info p {
+    margin-bottom: 0.5rem;
 }
 
 .shop-gallery {
@@ -844,6 +847,15 @@ footer {
         font-size: 1.4rem;
     }
     
+    .director-profile {
+        flex-direction: column;
+    }
+
+    .director-img {
+        width: 100%;
+        margin-right: 0;
+    }
+
     .btn {
         padding: 0.7rem 1.5rem;
         font-size: 0.9rem;
