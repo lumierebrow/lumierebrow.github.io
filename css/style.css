@@ -672,6 +672,14 @@ footer {
     transition: transform 0.3s, background-color 0.3s;
 }
 
+.social-links ul li {
+    display: flex;
+}
+
+.social-links ul li span {
+    line-height: 35px;
+}
+
 /* 예약하기 버튼 스타일 */
 .booking-button {
     background-color: var(--accent-color, #ff6b6b);
