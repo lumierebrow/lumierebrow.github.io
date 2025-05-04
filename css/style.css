@@ -476,6 +476,11 @@ section {
     color: var(--light-text);
 }
 
+.more-review {
+    text-align: center;
+    margin-top: 35px;
+}
+
 .stars {
     color: #FFCC00;
     margin-bottom: 1rem;
@@ -539,6 +544,14 @@ section {
 
 .info-text p {
     color: var(--light-text);
+}
+
+#comehere {
+    background-color: #ff816f;
+    color: white;
+    text-decoration: none;
+    padding: 5px 13px;
+    border-radius: 5px;
 }
 
 /* Footer */
@@ -664,6 +677,7 @@ footer {
     background-color: var(--accent-color, #ff6b6b);
     font-weight: bold;
     font-size: 0.75rem;
+    text-decoration: none;
 }
 
 /* 위로가기 버튼 스타일 */
