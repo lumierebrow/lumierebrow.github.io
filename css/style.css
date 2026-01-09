@@ -314,7 +314,8 @@ section {
     transition: all 0.3s;
 }
 
-.tab-btn.active, .tab-btn:hover {
+.tab-btn.active,
+.tab-btn:hover {
     background-color: var(--accent-color);
     color: var(--white);
 }
@@ -347,13 +348,31 @@ section {
 
 .service-info p {
     color: var(--light-text);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.service-detail {
+    font-size: 0.9rem;
+    color: #8d7b73;
+    background-color: #fcfcfc;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+    border: 1px solid #f0f0f0;
 }
 
 .service-price {
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--accent-color);
+}
+
+.service-note {
+    margin-top: 1rem;
+    text-align: right;
+    color: var(--light-text);
+    font-size: 0.9rem;
 }
 
 /* Booking Section */
@@ -714,8 +733,13 @@ footer {
 
 /* Animations */
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Media Queries */
@@ -723,25 +747,25 @@ footer {
     section {
         padding: 4rem 5%;
     }
-    
+
     .about-content,
     .location-content {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    
+
     .about-text {
         padding-right: 0;
     }
-    
+
     .shop-gallery {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .booking-steps {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -751,11 +775,11 @@ footer {
     .header-container {
         position: relative;
     }
-    
+
     .menu-toggle {
         display: block;
     }
-    
+
     nav {
         position: absolute;
         top: 100%;
@@ -768,58 +792,58 @@ footer {
         display: none;
         z-index: 1000;
     }
-    
+
     nav.active {
         display: block;
         animation: fadeIn 0.3s;
     }
-    
+
     nav ul {
         flex-direction: column;
     }
-    
+
     nav ul li {
         margin: 0;
         padding: 0.8rem 0;
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
-    
+
     nav ul li:last-child {
         border-bottom: none;
     }
-    
+
     .slide-content {
         padding: 1.5rem;
         max-width: 90%;
     }
-    
+
     .slide-content h2 {
         font-size: 2rem;
     }
-    
+
     .shop-gallery {
         grid-template-columns: 1fr;
     }
-    
+
     .service-tabs {
         flex-wrap: wrap;
     }
-    
+
     .tab-btn {
         padding: 0.6rem 1rem;
         margin: 0.3rem;
         font-size: 0.9rem;
     }
-    
+
     /* 모바일에서 텍스트 줄이기 */
     [data-tab="semipermanent"] {
         font-size: 0.85rem;
     }
-    
+
     [data-tab="facewaxing"] {
         font-size: 0.85rem;
     }
-    
+
     [data-tab="finemark"] {
         font-size: 0.85rem;
     }
@@ -828,19 +852,19 @@ footer {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .service-info {
         margin-bottom: 1rem;
     }
-    
+
     .booking-steps {
         grid-template-columns: 1fr;
     }
-    
+
     .review-cards {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-content {
         grid-template-columns: 1fr;
     }
@@ -849,7 +873,7 @@ footer {
         bottom: 15px;
         right: 15px;
     }
-    
+
     .fixed-button {
         width: 45px;
         height: 45px;
@@ -860,15 +884,15 @@ footer {
     .logo h1 {
         font-size: 1.2rem;
     }
-    
+
     .section-title {
         font-size: 1.8rem;
     }
-    
+
     .slide-content h2 {
         font-size: 1.4rem;
     }
-    
+
     .director-profile {
         flex-direction: column;
     }
@@ -887,7 +911,7 @@ footer {
         padding: 0.5rem 0.8rem;
         font-size: 0.9rem;
     }
-    
+
     /* 매우 작은 화면에서 텍스트 더 줄이기 */
     [data-tab="semipermanent"]::after,
     [data-tab="eyelash"]::after,
